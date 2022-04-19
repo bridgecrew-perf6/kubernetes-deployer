@@ -1,7 +1,7 @@
 ## Create DockerHub credential
 
 ```
-kubectl --kubeconfig=D:\VKE\test.yaml create secret docker-registry dockerhub-registry --docker-username=<USERNAME> --docker-password=<PASSWORD> --docker-email=<EMAIL>
+kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml create secret docker-registry dockerhub-token --docker-username=<USERNAME> --docker-password=<PASSWORD> --docker-email=<EMAIL>
 ```
 
 ## Build and push to DockerHub

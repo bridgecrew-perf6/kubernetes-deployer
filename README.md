@@ -15,39 +15,39 @@ Goto : https://my.vultr.com/kubernetes/manage/ -> Click Instance -> Download Con
 Move file vke .yaml and rename to :
 
 ```
-D:\VKE\test.yaml
+D:\kubeconfig\vultr\test.yaml
 ```
 
 ## Setup Auto create Loadbalancer + SSL (One-time Only)
 
 ```
-$ kubectl --kubeconfig=D:\VKE\test.yaml apply -f main/nginx-ingress.yaml
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml apply -f main/nginx-ingress.yaml
 
-$ kubectl --kubeconfig=D:\VKE\test.yaml get ingress
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml get ingress
 ```
 
 ```
-$ kubectl --kubeconfig=D:\VKE\test.yaml apply -f https://github.com/jetstack/cert-manager/releases/download/v1.7.0/cert-manager.yaml
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml apply -f https://github.com/jetstack/cert-manager/releases/download/v1.7.0/cert-manager.yaml
 
-$ kubectl --kubeconfig=D:\VKE\test.yaml apply -f kubernetes/main/letsencrypt.yaml
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml apply -f kubernetes/main/letsencrypt.yaml
 ```
 
 ## Deploy App
 
 ```
-$ kubectl --kubeconfig=D:\VKE\test.yaml apply -f kubernetes/app/app-deploy.yaml
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml apply -f kubernetes/app/app-deploy.yaml
 
-$ kubectl --kubeconfig=D:\VKE\test.yaml get pods
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml get pods
 ```
 
 ```
-$ kubectl --kubeconfig=D:\VKE\test.yaml apply -f kubernetes/app/app-ingress.yaml
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml apply -f kubernetes/app/app-ingress.yaml
 
-$ kubectl --kubeconfig=D:\VKE\test.yaml get ingress
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml get ingress
 ```
 
 ```
-$ kubectl --kubeconfig=D:\VKE\test.yaml apply -f kubernetes/app/app-autoscalling.yaml
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml apply -f kubernetes/app/app-autoscalling.yaml
 ```
 
 <br>
@@ -63,11 +63,11 @@ And see README.md
 ## Exec pods
 
 ```
-kubectl --kubeconfig=D:\VKE\test.yaml get pods
+kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml get pods
 ```
 
 ```
-kubectl --kubeconfig=D:\VKE\test.yaml exec "<pods-name-xxxx>" -- /bin/bash
+kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml exec "<pods-name-xxxx>" -- /bin/bash
 ```
 
 <br>
@@ -75,7 +75,7 @@ kubectl --kubeconfig=D:\VKE\test.yaml exec "<pods-name-xxxx>" -- /bin/bash
 ## Rolling update kubernetes
 
 ```
-kubectl --kubeconfig=D:\VKE\test.yaml rollout restart deployment <app-name>
+kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml rollout restart deployment <app-name>
 ```
 
 <br>
@@ -85,34 +85,34 @@ kubectl --kubeconfig=D:\VKE\test.yaml rollout restart deployment <app-name>
 Delete Everything
 
 ```
-kubectl --kubeconfig=D:\VKE\test.yaml delete --all all
+kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml delete --all all
 ```
 
 Delete Ingress
 
 ```
-$ kubectl --kubeconfig=D:\VKE\test.yaml get ingress
-$ kubectl --kubeconfig=D:\VKE\test.yaml delete ingress <app-ingress>
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml get ingress
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml delete ingress <app-ingress>
 ```
 
 Delete Deployment
 
 ```
-kubectl --kubeconfig=D:\VKE\test.yaml delete deployment <app-deployment-name>
+kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml delete deployment <app-deployment-name>
 ```
 
 Delete Service
 
 ```
-$ kubectl --kubeconfig=D:\VKE\test.yaml get svc
-$ kubectl --kubeconfig=D:\VKE\test.yaml delete service <app-service>
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml get svc
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml delete service <app-service>
 ```
 
 ## COMMANDS
 
 ```
-$ kubectl --kubeconfig=D:\VKE\test.yaml get all
-$ kubectl --kubeconfig=D:\VKE\test.yaml get pods
-$ kubectl --kubeconfig=D:\VKE\test.yaml get ingress
-$ kubectl --kubeconfig=D:\VKE\test.yaml describe pod <pod_name>
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml get all
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml get pods
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml get ingress
+$ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml describe pod <pod_name>
 ```

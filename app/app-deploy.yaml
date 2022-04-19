@@ -21,8 +21,8 @@ spec:
         - name: github-token # Change this with your registry hosting, ex : github-token, gitlab-token, dockerhub-token
       containers:
         - name: nextjs-app
-          # image: registry.gitlab.com/<>/kubernetes-next:latest
-          image: ghcr.io/rendyproklamanta/kubernetes-next:latest
+          # image: registry.gitlab.com/<username>/<repository>:latest
+          image: ghcr.io/<username>/<repository>:latest
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
