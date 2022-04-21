@@ -67,7 +67,7 @@ kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml get pods
 ```
 
 ```
-kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml exec "<pods-name-xxxx>" -- /bin/bash
+kubectl --kubeconfig=D:\kubeconfig\vultr\test.yaml exec --stdin --tty <pods-name-xxxx> -- /bin/bash
 ```
 
 <br>
