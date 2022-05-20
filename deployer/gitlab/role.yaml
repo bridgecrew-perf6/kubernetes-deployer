@@ -5,5 +5,5 @@ metadata:
   name: deployer
 rules:
 - apiGroups: ["", "extensions", "apps"]
-  resources: ["services", "deployments", "replicasets", "pods", "configmap"]
+  resources: ["services", "deployments", "ingresses", "replicasets", "pods", "configmap"]
   verbs: ["*"]
