@@ -4,6 +4,6 @@ metadata:
   namespace: default
   name: deployer
 rules:
-- apiGroups: ["", "extensions", "apps"]
+- apiGroups: ["", "extensions", "apps", "networking.k8s.io"]
   resources: ["services", "deployments", "ingresses", "replicasets", "pods", "configmap"]
   verbs: ["*"]
