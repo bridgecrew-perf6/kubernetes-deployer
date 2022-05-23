@@ -5,9 +5,8 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/affinity: "cookie"
     nginx.ingress.kubernetes.io/session-cookie-name: "ingress-cookie"
-    nginx.ingress.kubernetes.io/session-cookie-expires: "172800" # in seconds
-    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800" # in seconds
     nginx.ingress.kubernetes.io/server-alias: "www.app.domain.com"
 spec:
   tls:
