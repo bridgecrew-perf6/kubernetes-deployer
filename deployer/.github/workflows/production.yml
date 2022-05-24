@@ -60,4 +60,4 @@ jobs:
           config: ${{ secrets.KUBE_CONFIG }}
           version: latest
           # Change app-deploy-name to your deployment name $ kubectl get deployments
-          args: rollout restart deploy app-deploy-name
+          args: rollout restart deploy app-deploy

@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: nextjs-app
+  name: app-deploy
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: nextjs-app
+    name: app-deploy
   minReplicas: 1
   maxReplicas: 10
   metrics:

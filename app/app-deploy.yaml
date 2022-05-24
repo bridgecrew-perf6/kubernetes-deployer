@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nextjs-app
+  name: app-deploy
 spec:
   replicas: 3
   strategy:
@@ -11,16 +11,17 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      name: nextjs-app
+      name: app-deploy
   template:
     metadata:
       labels:
-        name: nextjs-app
+        name: app-deploy
     spec:
       imagePullSecrets:
-        - name: github-token # Change this with your registry hosting, ex : github-token, gitlab-token, dockerhub-token
+        - name: xxxx-token # Change this with your registry hosting, ex : github-token, gitlab-token, dockerhub-token
       containers:
-        - name: nextjs-app
+        - name: app-deploy
+          # image: docker.io/<username>/<repository>:latest
           # image: registry.gitlab.com/<username>/<repository>:latest
           image: ghcr.io/<username>/<repository>:latest
           ports:
@@ -48,10 +49,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nextjs-service
+  name: app-service
 spec:
   selector:
-    name: nextjs-app
+    name: app-deploy
   ports:
     - name: http
       port: 80

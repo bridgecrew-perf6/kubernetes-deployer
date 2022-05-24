@@ -32,6 +32,6 @@ deploy:
     - kubectl config use-context deploy-cluster
   script:
     - kubectl apply -f kubernetes/app/app-deploy.yaml
-    - kubectl rollout restart deploy app-deploy-name # Change app-deploy-name to your deployment name $ kubectl get deployments
+    - kubectl rollout restart deploy app-deploy # Change app-deploy-name to your deployment name $ kubectl get deployments
   only:
     - main # branch name
