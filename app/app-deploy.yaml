@@ -17,6 +17,18 @@ spec:
       labels:
         name: app-deploy
     spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - app-deploy
+                topologyKey: kubernetes.io/hostname
+              weight: 100
       imagePullSecrets:
         - name: xxxx-token # Change this with your registry hosting, ex : github-token, gitlab-token, dockerhub-token
       containers:
@@ -27,23 +39,24 @@ spec:
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
-          readinessProbe:
-            httpGet:
-              path: /api/health
-              port: 3000
-            periodSeconds: 5
-            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: 500m
+              memory: 500M
+            requests:
+              cpu: 200m
+              memory: 300M
           livenessProbe:
-            httpGet:
-              path: /api/health
-              port: 3000
-            periodSeconds: 5
-            timeoutSeconds: 1
-            initialDelaySeconds: 45
-          env:
-            - name: STARTUP_DELAY_SECONDS
-              value: "40"
-      terminationGracePeriodSeconds: 60
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            tcpSocket:
+              port: 80
+            timeoutSeconds: 30
+          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            tcpSocket:
+              port: 80
 
 ---
 apiVersion: v1
